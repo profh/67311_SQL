@@ -1,0 +1,206 @@
+-- To find a list of information schemas in the database
+SELECT catalog_name, schema_name, schema_owner FROM information_schema.schemata;
+--   catalog_name |    schema_name     | schema_owner
+--  --------------+--------------------+--------------
+--   arbeit_311   | pg_toast           | profh
+--   arbeit_311   | pg_temp_1          | profh
+--   arbeit_311   | pg_toast_temp_1    | profh
+--   arbeit_311   | pg_catalog         | profh
+--   arbeit_311   | information_schema | profh
+--   arbeit_311   | public             | profh
+--   arbeit_311   | assert             | profh
+--   arbeit_311   | unit_tests         | profh
+--  (8 rows)
+
+
+-- To find list of info in the information_schema
+SELECT table_catalog, table_schema, table_name, table_type, is_insertable_into FROM information_schema.tables WHERE table_schema = 'information_schema';
+--   table_catalog |    table_schema    |              table_name               | table_type | is_insertable_into
+--  ---------------+--------------------+---------------------------------------+------------+--------------------
+--   arbeit_311    | information_schema | information_schema_catalog_name       | VIEW       | NO
+--   arbeit_311    | information_schema | applicable_roles                      | VIEW       | NO
+--   arbeit_311    | information_schema | administrable_role_authorizations     | VIEW       | NO
+--   arbeit_311    | information_schema | attributes                            | VIEW       | NO
+--   arbeit_311    | information_schema | character_sets                        | VIEW       | NO
+--   arbeit_311    | information_schema | check_constraint_routine_usage        | VIEW       | NO
+--   arbeit_311    | information_schema | check_constraints                     | VIEW       | NO
+--   arbeit_311    | information_schema | collations                            | VIEW       | NO
+--   arbeit_311    | information_schema | collation_character_set_applicability | VIEW       | NO
+--   arbeit_311    | information_schema | column_domain_usage                   | VIEW       | NO
+--   arbeit_311    | information_schema | column_privileges                     | VIEW       | NO
+--   arbeit_311    | information_schema | column_udt_usage                      | VIEW       | NO
+--   arbeit_311    | information_schema | columns                               | VIEW       | NO
+--   arbeit_311    | information_schema | constraint_column_usage               | VIEW       | NO
+--   arbeit_311    | information_schema | constraint_table_usage                | VIEW       | NO
+--   arbeit_311    | information_schema | domain_constraints                    | VIEW       | NO
+--   arbeit_311    | information_schema | domain_udt_usage                      | VIEW       | NO
+--   arbeit_311    | information_schema | domains                               | VIEW       | NO
+--   arbeit_311    | information_schema | enabled_roles                         | VIEW       | NO
+--   arbeit_311    | information_schema | key_column_usage                      | VIEW       | NO
+--   arbeit_311    | information_schema | parameters                            | VIEW       | NO
+--   arbeit_311    | information_schema | referential_constraints               | VIEW       | NO
+--   arbeit_311    | information_schema | role_column_grants                    | VIEW       | NO
+--   arbeit_311    | information_schema | routine_privileges                    | VIEW       | NO
+--   arbeit_311    | information_schema | role_routine_grants                   | VIEW       | NO
+--   arbeit_311    | information_schema | routines                              | VIEW       | NO
+--   arbeit_311    | information_schema | schemata                              | VIEW       | NO
+--   arbeit_311    | information_schema | sequences                             | VIEW       | NO
+--   arbeit_311    | information_schema | sql_implementation_info               | BASE TABLE | YES
+--   arbeit_311    | information_schema | sql_languages                         | BASE TABLE | YES
+--   arbeit_311    | information_schema | sql_packages                          | BASE TABLE | YES
+--   arbeit_311    | information_schema | sql_parts                             | BASE TABLE | YES
+--   arbeit_311    | information_schema | sql_sizing                            | BASE TABLE | YES
+--   arbeit_311    | information_schema | sql_sizing_profiles                   | BASE TABLE | YES
+--   arbeit_311    | information_schema | table_constraints                     | VIEW       | NO
+--   arbeit_311    | information_schema | table_privileges                      | VIEW       | NO
+--   arbeit_311    | information_schema | role_table_grants                     | VIEW       | NO
+--   arbeit_311    | information_schema | tables                                | VIEW       | NO
+--   arbeit_311    | information_schema | triggered_update_columns              | VIEW       | NO
+--   arbeit_311    | information_schema | triggers                              | VIEW       | NO
+--   arbeit_311    | information_schema | udt_privileges                        | VIEW       | NO
+--   arbeit_311    | information_schema | role_udt_grants                       | VIEW       | NO
+--   arbeit_311    | information_schema | usage_privileges                      | VIEW       | NO
+--   arbeit_311    | information_schema | role_usage_grants                     | VIEW       | NO
+--   arbeit_311    | information_schema | user_defined_types                    | VIEW       | NO
+--   arbeit_311    | information_schema | view_column_usage                     | VIEW       | NO
+--   arbeit_311    | information_schema | view_routine_usage                    | VIEW       | NO
+--   arbeit_311    | information_schema | view_table_usage                      | VIEW       | NO
+--   arbeit_311    | information_schema | views                                 | VIEW       | NO
+--   arbeit_311    | information_schema | data_type_privileges                  | VIEW       | NO
+--   arbeit_311    | information_schema | element_types                         | VIEW       | NO
+--   arbeit_311    | information_schema | _pg_foreign_table_columns             | VIEW       | NO
+--   arbeit_311    | information_schema | column_options                        | VIEW       | NO
+--   arbeit_311    | information_schema | _pg_foreign_data_wrappers             | VIEW       | NO
+--   arbeit_311    | information_schema | foreign_data_wrapper_options          | VIEW       | NO
+--   arbeit_311    | information_schema | foreign_data_wrappers                 | VIEW       | NO
+--   arbeit_311    | information_schema | _pg_foreign_servers                   | VIEW       | NO
+--   arbeit_311    | information_schema | foreign_server_options                | VIEW       | NO
+--   arbeit_311    | information_schema | foreign_servers                       | VIEW       | NO
+--   arbeit_311    | information_schema | _pg_foreign_tables                    | VIEW       | NO
+--   arbeit_311    | information_schema | foreign_table_options                 | VIEW       | NO
+--   arbeit_311    | information_schema | foreign_tables                        | VIEW       | NO
+--   arbeit_311    | information_schema | _pg_user_mappings                     | VIEW       | NO
+--   arbeit_311    | information_schema | user_mapping_options                  | VIEW       | NO
+--   arbeit_311    | information_schema | user_mappings                         | VIEW       | NO
+--   arbeit_311    | information_schema | sql_features                          | BASE TABLE | YES
+--  (66 rows)
+
+SELECT table_catalog, table_schema, table_name, table_type, is_insertable_into FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema');
+--   table_catalog | table_schema |  table_name  | table_type | is_insertable_into
+--  ---------------+--------------+--------------+------------+--------------------
+--   arbeit_311    | public       | domains      | BASE TABLE | YES
+--   arbeit_311    | public       | projects     | BASE TABLE | YES
+--   arbeit_311    | public       | users        | BASE TABLE | YES
+--   arbeit_311    | public       | assignments  | BASE TABLE | YES
+--   arbeit_311    | unit_tests   | tests        | BASE TABLE | YES
+--   arbeit_311    | public       | tasks        | BASE TABLE | YES
+--   arbeit_311    | unit_tests   | test_details | BASE TABLE | YES
+--  (7 rows)
+
+
+SELECT table_catalog, table_schema, table_name, table_type, is_insertable_into FROM information_schema.tables WHERE table_schema = 'pg_catalog';
+--   table_catalog | table_schema |           table_name            | table_type | is_insertable_into
+--  ---------------+--------------+---------------------------------+------------+--------------------
+--   arbeit_311    | pg_catalog   | pg_statistic                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_type                         | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_roles                        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_shadow                       | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_authid                       | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_group                        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_user                         | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_rules                        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_views                        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_tables                       | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_indexes                      | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stats                        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_locks                        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_cursors                      | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_available_extensions         | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_settings                     | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_available_extension_versions | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_prepared_xacts               | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_prepared_statements          | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_seclabels                    | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_timezone_abbrevs             | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_timezone_names               | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_all_tables              | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_xact_all_tables         | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_sys_tables              | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_xact_sys_tables         | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_user_tables             | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_xact_user_tables        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_statio_all_tables            | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_statio_sys_tables            | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_statio_user_tables           | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_all_indexes             | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_sys_indexes             | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_user_indexes            | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_proc                         | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_statio_all_sequences         | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_statio_sys_sequences         | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_class                        | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_statio_user_sequences        | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_activity                | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_replication             | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_database                | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_database_conflicts      | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_user_functions          | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_xact_user_functions     | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_stat_bgwriter                | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_user_mappings                | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_user_mapping                 | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_attribute                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_constraint                   | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_inherits                     | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_operator                     | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_opfamily                     | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_opclass                      | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_am                           | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_amop                         | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_amproc                       | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_language                     | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_largeobject_metadata         | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_aggregate                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_rewrite                      | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_trigger                      | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_description                  | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_database                     | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_statio_all_indexes           | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_statio_sys_indexes           | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_statio_user_indexes          | VIEW       | NO
+--   arbeit_311    | pg_catalog   | pg_enum                         | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_namespace                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_conversion                   | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_depend                       | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_db_role_setting              | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_tablespace                   | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_pltemplate                   | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_auth_members                 | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_shdepend                     | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_shdescription                | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_ts_config                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_ts_config_map                | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_ts_dict                      | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_ts_parser                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_ts_template                  | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_extension                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_foreign_data_wrapper         | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_foreign_server               | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_default_acl                  | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_seclabel                     | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_shseclabel                   | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_collation                    | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_range                        | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_largeobject                  | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_attrdef                      | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_index                        | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_cast                         | BASE TABLE | YES
+--   arbeit_311    | pg_catalog   | pg_foreign_table                | BASE TABLE | YES
+--  (95 rows)
+
+SELECT * FROM pg_catalog.pg_user;
+--   usename | usesysid | usecreatedb | usesuper | usecatupd | userepl |  passwd  | valuntil | useconfig
+--  ---------+----------+-------------+----------+-----------+---------+----------+----------+-----------
+--   profh   |       10 | t           | t        | t         | t       | ******** |          |
+--   cmuis   |    61788 | f           | f        | f         | f       | ******** |          |
+--  (2 rows)
