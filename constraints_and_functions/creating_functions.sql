@@ -21,8 +21,12 @@ CREATE OR REPLACE FUNCTION calculate_percent_tasks_completed(pr_id int) RETURNS 
 		percent_completed real;
 	BEGIN
 		number_of_tasks_total = (select count(*) from tasks where project_id = pr_id);
-		number_of_tasks_completed = (select count(*) from tasks where completed = true and project_id = pr_id);
-		percent_completed = number_of_tasks_completed / number_of_tasks_total;
+		IF number_of_tasks_total = 0 THEN
+			percent_completed = NULL;
+		ELSE
+			number_of_tasks_completed = (select count(*) from tasks where completed = true and project_id = pr_id);
+			percent_completed = number_of_tasks_completed / number_of_tasks_total;
+		END IF;
 	  RETURN percent_completed;
 	END;
 	$$ LANGUAGE plpgsql;
