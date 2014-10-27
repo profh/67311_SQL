@@ -22,6 +22,7 @@ CREATE OR REPLACE FUNCTION unit_tests.percent_tasks_quarter_complete() RETURNS t
 $$
 LANGUAGE plpgsql;
 
+
 -- Test that project 2 gives us 100%
 CREATE OR REPLACE FUNCTION unit_tests.percent_tasks_all_complete() RETURNS test_result AS $$
 	DECLARE 
