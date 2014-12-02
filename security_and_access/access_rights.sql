@@ -1,13 +1,15 @@
 
 -- Create users with various levels of access
-CREATE USER tmp_commish WITH LOGIN PASSWORD 'notlong' VALID UNTIL '2012-12-31' CONNECTION LIMIT 2;
+CREATE USER tmp_commish WITH LOGIN PASSWORD 'notlong' VALID UNTIL '2014-12-31' CONNECTION LIMIT 2;
 CREATE USER batman WITH LOGIN ENCRYPTED PASSWORD 'darkknight' SUPERUSER;
 ALTER USER batman NOSUPERUSER;
+
 
 -- Info on users
 \du -- describe users
 SELECT * FROM pg_user;
 SELECT * FROM pg_shadow; -- only for superusers
+
 
 -- Create groups
 CREATE GROUP police WITH USER gordon, blake, fields;
@@ -17,6 +19,7 @@ CREATE GROUP police WITH USER gordon, blake, fields;
 CREATE DATABASE gcpd_sec OWNER profh CONNECTION LIMIT 3;
 ALTER DATABASE gcpd_sec OWNER TO tmp_commish;
 
+
 -- Info on databases and tables
 SELECT * FROM pg_database ORDER BY datname;
 SELECT * FROM pg_tables ORDER BY tablename;
@@ -24,6 +27,7 @@ SELECT * FROM pg_tables ORDER BY tablename;
 
 -- Change ownership of a table
 ALTER TABLE case_summary OWNER TO batman;
+
 
 -- Info on privileges
 \dp -- describe privileges
