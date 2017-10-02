@@ -2,7 +2,7 @@ SELECT name FROM dc ORDER BY name;
 
 SELECT name FROM marvel ORDER BY name;
 
-SELECT ARRAY_AGG(name) FROM marvel ORDER BY name;
+SELECT ARRAY_AGG(name) FROM marvel;
 
 -- UNION and UNION ALL
 
