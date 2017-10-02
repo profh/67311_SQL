@@ -34,6 +34,13 @@ ALTER TABLE case_summary OWNER TO batman;
 \dt -- tells you who owns tables in database
 
 
+-- Check privileges
+SELECT has_table_privilege('cases', 'select');  -- t
+SELECT has_table_privilege('batman','cases', 'select');  -- f
+select has_database_privilege('gcpd', 'create');  -- t
+select has_database_privilege('batman', 'gcpd', 'create');  -- f
+
+
 -- Change access to specific tables and views
 GRANT ALL PRIVILEGES ON cases TO batman;
 GRANT SELECT ON case_crimes_view TO PUBLIC;
